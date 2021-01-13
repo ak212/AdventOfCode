@@ -3,9 +3,7 @@ package main.java;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Day1 {
@@ -21,29 +19,19 @@ public class Day1 {
    }
    
    public static int partOne(List<Integer> numbers) {
-      Map<Integer, Integer> candidates = new HashMap<>();
       for (int num : numbers) {
-         candidates.put(num, YEAR_2020 - num);
-      }
-      for (Integer k : candidates.keySet()) {
-         if (candidates.containsKey(candidates.get(k))) {
-            return k * candidates.get(k);
+         if (numbers.contains(YEAR_2020 - num)) {
+            return num * (YEAR_2020 - num);
          }
       }
-      
       return 0;
    }
    
    public static int partTwo(List<Integer> numbers) {
-      Map<Integer, Integer> candidates = new HashMap<>();
-      for (int num : numbers) {
-         candidates.put(YEAR_2020 - num, num);
-      }
-      
       for (int i = 0; i < numbers.size() - 1; i++) {
          for (int k = i + 1; k < numbers.size(); k++) {
-            if (candidates.containsKey(numbers.get(i) + numbers.get(k))) {
-               return candidates.get(numbers.get(i) + numbers.get(k)) * numbers.get(i)
+            if (numbers.contains(YEAR_2020 - (numbers.get(i) + numbers.get(k)))) {
+               return (YEAR_2020 - (numbers.get(i) + numbers.get(k))) * numbers.get(i)
                      * numbers.get(k);
             }
          }
