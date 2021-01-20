@@ -10,7 +10,7 @@ public class Day1 {
    public static final Integer YEAR_2020 = 2020;
    
    public static void main(String[] args) throws IOException {
-      List<String> lines = Files.readAllLines(Paths.get("src/main/resources/Day1/Day1.in"));
+      List<String> lines = Files.readAllLines(Paths.get("src/main/resources/Day1.in"));
       List<Integer> numbers = lines.stream().map(line -> Integer.parseInt(line))
             .collect(Collectors.toList());
       
